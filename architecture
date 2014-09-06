@@ -1,0 +1,55 @@
+ploxblog ideas:
+===========
+
+docs:
+---
+  - post:
+    - example:
+      {
+        "tags": [],
+        "title": "Package Solr 4 Using Maven-hosted war Artifact",
+        "summary": "",
+        "content": "",
+        "id": "solr4-packaging-from-maven",
+        "author": "mdye",
+        "author_date": "2014-08-20T12:23:04.000Z",
+        "publish_date": nil | "2015-10-13T04:00:06.000Z",
+        "
+        "type": "post"
+      }
+    - notes:
+      1. post id is provided by the author, checked for uniqueness at creation time and makes up a unique url to the post
+      2. author is a unique id, picks out an author doc
+      3. content is in HTML
+      4. summary is short, in HTML
+
+  - author:
+    - example:
+      {
+        "id": "mdye",
+        "name": {
+          "first": "michael",
+          "last": "dye"
+        },
+        "email": "mike@lulzotron.com",
+        "type": "author"
+      }
+
+  - notes:
+    1. on output, each "id" is prefixed by the "type" and ("context"), then sent to the client.
+
+path descriptions:
+---
+- read, idempotent:
+  1. fetch all posts "written_by" author
+  2. check uniqueness of "id" by "type"
+  3. fetch single doc by "id" given "type" (inferred by context)
+  4. fetch all unpublished or published
+
+- modify, idempotent:
+  1. do unpublish (set publish_date to nil)
+  2. do patch (disallow updating id, type) 
+
+- modify, non-idempotent:
+  1. do publish (set publish_date to now)
+  2. do create new
