@@ -6,7 +6,7 @@ docs:
   - post:
     - example:
       {
-        "tags": [],
+        "tags": ["solr", "search"],
         "title": "Package Solr 4 Using Maven-hosted war Artifact",
         "summary": "",
         "content": "",
@@ -14,7 +14,7 @@ docs:
         "author": "mdye",
         "author_date": "2014-08-20T12:23:04.000Z",
         "publish_date": nil | "2015-10-13T04:00:06.000Z",
-        "
+        "": "",
         "type": "post"
       }
     - notes:
@@ -36,7 +36,7 @@ docs:
       }
 
   - notes:
-    1. on output, each "id" is prefixed by the "type" and ("context"), then sent to the client.
+    1. on output, each "id" is prefixed by /<context>/<type>/, then sent to the client.
 
 path descriptions:
 ---
@@ -48,7 +48,7 @@ path descriptions:
 
 - modify, idempotent:
   1. do unpublish (set publish_date to nil)
-  2. do patch (disallow updating id, type) 
+  2. do patch (disallow updating id, type)
 
 - modify, non-idempotent:
   1. do publish (set publish_date to now)
