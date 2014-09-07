@@ -1,6 +1,7 @@
 (ns ploxblog.handler
   (:use ring.util.response)
-  (:require [compojure.core :refer :all]
+  (:require [ploxblog.wrappers :as wrappers]
+            [compojure.core :refer :all]
             [compojure.handler :as handler]
             [compojure.route :as route]
             [ring.middleware.json :as middleware]
@@ -16,12 +17,14 @@
 (defroutes app-routes
   (context "/api" []
     (GET "/post" []
-         (info "handling /post")
-         (response {:content "foof"}))
+         (info "handling /api/post")
+         (response {:message "foof"}))
     (route/resources "/")
-    (route/not-found "not found")))
+    (route/not-found (response {:message "not found"}))))
 
 (def app
   (-> (handler/api app-routes)
       (middleware/wrap-json-body)
-      (middleware/wrap-json-response)))
+      (middleware/wrap-json-response)
+      (wrappers/req-log)
+      (wrappers/resp-log)))
