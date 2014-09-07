@@ -11,9 +11,9 @@
                  [com.taoensso/timbre "3.3.0"]]
   :plugins [[lein-ring "0.8.11"]
             [lein-deps-tree "0.1.2"]]
-  :ring {:handler ploxblog.handler/app
-         :init ploxblog.handler/init
-         :destroy ploxblog.handler/destroy
+  :ring {:handler ploxblog.app/app-handler
+         :init ploxblog.app/init
+         :destroy ploxblog.app/destroy
          :auto-reload? true}
   :profiles
   {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
