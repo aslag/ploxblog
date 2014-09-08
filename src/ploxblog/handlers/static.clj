@@ -1,6 +1,6 @@
 (ns ploxblog.handlers.static
-  (:use ring.util.response)
-  (:require [compojure.core :refer :all]
+  (:require [ring.util.response :refer :all]
+            [compojure.core :refer :all]
             [compojure.route :as route]
             [taoensso.timbre :as timbre]))
 (timbre/refer-timbre)

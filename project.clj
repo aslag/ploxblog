@@ -15,6 +15,7 @@
          :init ploxblog.app/init
          :destroy ploxblog.app/destroy
          :auto-reload? true}
+  ; TODO: establish a production deployment scheme, leveraging lein uberjar and below profiles
   :profiles
   {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
                         [ring/ring-devel "1.3.1"]]}})
