@@ -21,7 +21,7 @@
 ; combine api and static routes, apply middleware to each selectively
 (defroutes app-routes
   (-> plx-api/api-routes
-    (wrap-json-body)
+    (wrap-json-body {:keywords? true})
     (wrap-json-response))
   (-> plx-static/static-routes
     (wrap-resource "resources/public")

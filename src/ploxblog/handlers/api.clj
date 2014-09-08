@@ -8,9 +8,14 @@
 (def api-routes
   (routes
     (context "/api" []
-      (GET "/post" []
-           (info "handling /api/post")
-           (response {:message "foof"}))
+      (context "/post" []
+        (GET "/:id" [id]
+          (info (str "GET /api/post/" id))
+          (response {:message "foof"}))
+        (POST "/" {body :body}
+          (info (str "POST /api/post/ with body" body))
+          (response {:message "goof"})
+              ))
       ; removed b/c I hope to handle these more generally
       ;
       ; (route/not-found (response {:message "not found"}))
