@@ -6,16 +6,28 @@ docs:
   - post:
     - example:
       {
-        "tags": ["solr", "search"],
+        "tags": [
+          {
+            "id": "programming",
+            "label": "Programming"
+          },
+          {
+            "id": "languages",
+            "label": "Languages"
+          }
+        ],
         "title": "Package Solr 4 Using Maven-hosted war Artifact",
         "summary": "",
         "content": "",
         "id": "solr4-packaging-from-maven",
-        "author": "mdye",
+        "author": {
+          "id": "mfoo",
+          "firstname": "michael",
+          "lastname": "foo",
+          "email": "mfoo@lulzotron.com"
+        },
         "author_date": "2014-08-20T12:23:04.000Z",
-        "publish_date": nil | "2015-10-13T04:00:06.000Z",
-        "": "",
-        "type": "post"
+        "publish_date": nil | "2015-10-13T04:00:06.000Z"
       }
     - notes:
       1. post id is provided by the author, checked for uniqueness at creation time and makes up a unique url to the post
@@ -26,13 +38,10 @@ docs:
   - author:
     - example:
       {
-        "id": "mdye",
-        "name": {
-          "first": "michael",
-          "last": "dye"
-        },
-        "email": "mike@lulzotron.com",
-        "type": "author"
+        "id": "mfoo",
+        "firstname": "michael",
+        "lastname": "foo",
+        "email": "mfoo@lulzotron.com"
       }
 
   - notes:

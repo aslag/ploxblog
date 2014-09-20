@@ -2,11 +2,17 @@
   (:require [ring.util.response :refer :all]
             [compojure.core :refer :all]
             [compojure.route :as route]
+            [ploxblog.repositories.post :as post]
             [taoensso.timbre :as timbre]))
 (timbre/refer-timbre)
 
-(defn by-id [id]
-  {:id "some_id"})
+(defn nfound []
+  (route/not-found (response {:message "not found"})))
+
+(defn -handle-not-found [resp]
+  (if (or (nil? resp) (empty? resp))
+    (nfound)
+    (response resp)))
 
 (def api-routes
   (routes
@@ -15,15 +21,15 @@
         ; get all
         (GET "/" []
           (info "GET /api/post")
-          (response [{:id "some_id"}, {:id "some_other_id"}]))
+          (-handle-not-found (post/resolve (post/by-label "Post"))))
         ; get meta about one by id
         (HEAD "/:id" [id]
           (info "HEAD" (str "/api/post/" id))
-          (dissoc (response (by-id id)) :body))
+          (dissoc (-handle-not-found (post/resolve (post/by-id id))) :body))
         ; get one by id
         (GET "/:id" [id]
           (info "GET" (str "/api/post/" id))
-          (response (by-id id)))
+          (-handle-not-found (post/resolve (post/by-id id))))
         ; create new, returns new w/ id
         (POST "/" {body :body}
           (info "POST /api/post" body)

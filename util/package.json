@@ -1,0 +1,10 @@
+{
+  "name": "neo4j_node",
+  "version": "0.1.0",
+  "repository": { },
+  "private": true,
+  "dependencies": {
+    "async": "0.9.0",
+    "node-neo4j": "2.0.0-RC6"
+  }
+}
