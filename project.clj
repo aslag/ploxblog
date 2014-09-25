@@ -6,6 +6,7 @@
                  [ring "1.3.1"]
                  [ring-server "0.3.1"]
                  [compojure "1.1.8"]
+                 [clojurewerkz/neocons "3.0.0"]
                  ; uses jetty 7; must replace ring-jetty-adapter to use newer jetty
                  [ring/ring-json "0.3.1"]
                  [com.taoensso/timbre "3.3.0"]]

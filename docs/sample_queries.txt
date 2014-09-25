@@ -1,0 +1,22 @@
+create (achmed:Author {id: "achmed", firstname: "jonathan", lastname: "dye", email: "achmed@lulz.bz"}) 
+
+create (mdye:Author {id: "mdye", firstname: "michael", lastname: "dye", email: "mike@lulzotron.com"}) 
+
+create (a:Post {title: "Package Solr 4 Using Maven-hosted...", summary: "...", content: "...", id: "solr4-packaging-
+from-maven", author_date: 1410233513, publish_date: null}) 
+
+create (b:Post {title: "Combining Compojure Routes", summary: "...", content: "...", id: "combining-compojure-routes", author_date: 1410233697, publish_date: null}) 
+
+create (c:Post {title: "Writing Python like a boss", summary: "...", content: "...", id: "python-boss", author_date: 1410234600, publish_date: null}) 
+
+match (post:Post { id: "solr4-packaging-from-maven" }), (author:Author { id: "mdye" }) 
+create (post)-[:authored_by]->(author)
+create (author)-[:authored]->(post)
+
+match (post:Post { id: "combining-compojure-routes" }), (author:Author { id: "mdye" }) 
+create (post)-[:authored_by]->(author)
+create (author)-[:authored]->(post)
+
+match (post:Post { id: "python-boss" }), (author:Author { id: "achmed" }) 
+create (post)-[:authored_by]->(author)
+create (author)-[:authored]->(post)
