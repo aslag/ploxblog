@@ -6,11 +6,11 @@ create (afoo:Author {id: "afoo", firstname: "ach", lastname: "foo", email: "afoo
 
 create (mfoo:Author {id: "mfoo", firstname: "michael", lastname: "foo", email: "mfoo@lulzotron.com"})
 
-create (spfm:Post {title: "Package Solr 4 Using Maven-hosted...", summary: "...", content: "...", id: "solr4-packaging-from-maven", author_date: 1410233513, publish_date: null})
+create (spfm:Post {title: "Package Solr 4 Using Maven-hosted...", summary: "...", content: "...", id: "package-solr4-using-maven-hosted", author_date: 1410233513, publish_date: null})
 
 create (ccr:Post {title: "Combining Compojure Routes", summary: "...", content: "...", id: "combining-compojure-routes", author_date: 1410233697, publish_date: null})
 
-create (pb:Post {title: "Writing Python like a boss", summary: "...", content: "...", id: "python-boss", author_date: 1410234600, publish_date: null})
+create (pb:Post {title: "Writing Python like a boss", summary: "...", content: "...", id: "writing-python-like-a-boss", author_date: 1410234600, publish_date: null})
 
 create (programming:Tag {id: "programming", label: "Programming"})
 create (languages:Tag {id: "languages", label: "Languages"})
