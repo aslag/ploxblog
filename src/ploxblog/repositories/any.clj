@@ -18,13 +18,20 @@
 
 (defn by-label [label]
   (resp-single
-    (trans (str "MATCH n WHERE n:" label " RETURN n"))))
+    (trans
+      (format "match (n:%s) return n" label))))
 
-(defn by-id [id]
+(defn by-id [label id]
   (resp-single
-    (trans (tx/statement "MATCH n WHERE n.id={id} return n" {:id id}))))
+    (trans
+      (tx/statement
+        (format "match (n:%s {id: {id} }) return n" label)
+        {:id id}))))
 
 (defn delete [label id]
   (resp-single
     ; deletes posts and relationships to it; idempotent
-    (trans (tx/statement (str "MATCH (n:" label " {id: {id} })-[r]-() DELETE n, r") {:id id}))))
+    (trans
+      (tx/statement
+        (format "MATCH (n:%s {id: {id} })-[r]-() DELETE n, r" label)
+        {:id id}))))
