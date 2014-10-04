@@ -20,7 +20,7 @@
 (defn -single [id]
   (->
     (post/by-id id)
-    (post/resolve)
+    (post/hydrate)
     (-handle-not-found)))
 
 (def api-routes
@@ -32,7 +32,7 @@
         (GET "/" []
           (info "GET /api/post")
            (-> (post/by-label)
-               (post/resolve)
+               (post/hydrate)
                (-handle-not-found)))
 
         ; get meta about one by id

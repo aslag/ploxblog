@@ -11,7 +11,8 @@
                  [ring/ring-json "0.3.1"]
                  [com.taoensso/timbre "3.3.0"]]
   :plugins [[lein-ring "0.8.11"]
-            [lein-deps-tree "0.1.2"]]
+            [lein-deps-tree "0.1.2"]
+            [lein-cloverage "1.0.2"]]
   :ring {:handler ploxblog.app/app-handler
          :init ploxblog.app/init
          :destroy ploxblog.app/destroy

@@ -1,7 +1,8 @@
 (ns ploxblog.repositories.post
     (:require [ploxblog.repositories.any :as any]
               [clojurewerkz.neocons.rest.transaction :as tx]
-              [taoensso.timbre :as timbre]))
+              [taoensso.timbre :as timbre]
+              [clojure.string :as string]))
 (timbre/refer-timbre)
 
 (def ^:const label "Post")
@@ -13,7 +14,7 @@
 (def by-label (partial any/by-label label))
 
 ; resolves post data to make up full record
-(defn resolve [posts]
+(defn hydrate [posts]
   (map (fn [post]
          (let [id (:id post)]
            (-> post
@@ -26,8 +27,12 @@
 ; (defn -well-formed [data])
 
 (defn label [post]
+  (when-let [title (:title post)]
+    (-> title
+        (string/replace #"[^\d\w\s]+" "")
+        (string/replace #"[ ]+" "-")
+        (string/lower-case))))
 
-  )
 
 ; strategy: transform title to url-safe id and return that id (in URL) with 201. if user wants to retitle a post, will need to delete and recreate post with new id. Furnish way to store a redirect b/n old post id and new one (user picks)
 ; return values:
